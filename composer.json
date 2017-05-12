@@ -1,0 +1,41 @@
+{
+  "name": "silverware/validator",
+  "type": "silverstripe-module",
+  "description": "SilverWare Validator Module.",
+  "homepage": "https://github.com/praxisnetau/silverware-validator",
+  "keywords": [
+    "silverware",
+    "validator",
+    "validation",
+    "parsley",
+    "forms",
+    "silverstripe"
+  ],
+  "license": "BSD-3-Clause",
+  "authors": [
+    {
+      "name": "Colin Tucker",
+      "role": "Developer",
+      "email": "colin@praxis.net.au",
+      "homepage": "http://www.praxis.net.au"
+    }
+  ],
+  "require": {
+    "php": ">=5.6.0",
+    "guzzlehttp/guzzle": "^6.2",
+    "silverstripe/framework": "^4.0@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "SilverWare\\Validator\\": "src/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.1.x-dev"
+    },
+    "installer-name": "silverware-validator"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

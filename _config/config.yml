@@ -1,0 +1,15 @@
+---
+Name: silverware-validator
+---
+
+# Configure Form Field Extensions:
+
+SilverStripe\Forms\FormField:
+  extensions:
+    - SilverWare\Validator\Extensions\FormFieldExtension
+
+# Configure Validator Backend:
+
+SilverStripe\Core\Injector\Injector:
+  ValidatorBackend:
+    class: SilverWare\Validator\Backends\ParsleyBackend

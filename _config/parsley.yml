@@ -1,0 +1,67 @@
+---
+Name: silverware-validator-parsley
+---
+
+# Configure Parsley Backend:
+
+SilverWare\Validator\Backends\ParsleyBackend:
+  attribute:
+    prefix: 'data-parsley-'
+    default: 'type'
+  rules:
+    SilverWare\Validator\Rules\AlphaNumRule:
+      type: 'alphanum'
+    SilverWare\Validator\Rules\CheckRule:
+      attribute: 'check'
+    SilverWare\Validator\Rules\ComparisonRule:
+      attribute: '$type'
+    SilverWare\Validator\Rules\DateRule:
+      attribute: 'date'
+    SilverWare\Validator\Rules\DigitsRule:
+      type: 'digits'
+    SilverWare\Validator\Rules\DomainRule:
+      attribute: 'domain'
+    SilverWare\Validator\Rules\EmailRule:
+      type: 'email'
+    SilverWare\Validator\Rules\EqualToRule:
+      attribute: 'equalto'
+    SilverWare\Validator\Rules\IntegerRule:
+      type: 'integer'
+    SilverWare\Validator\Rules\LengthRule:
+      attribute: 'length'
+    SilverWare\Validator\Rules\MinRule:
+      attribute: 'min'
+    SilverWare\Validator\Rules\MinCheckRule:
+      attribute: 'mincheck'
+    SilverWare\Validator\Rules\MinLengthRule:
+      attribute: 'minlength'
+    SilverWare\Validator\Rules\MinWordsRule:
+      attribute: 'minwords'
+    SilverWare\Validator\Rules\MaxRule:
+      attribute: 'max'
+    SilverWare\Validator\Rules\MaxCheckRule:
+      attribute: 'maxcheck'
+    SilverWare\Validator\Rules\MaxLengthRule:
+      attribute: 'maxlength'
+    SilverWare\Validator\Rules\MaxWordsRule:
+      attribute: 'maxwords'
+    SilverWare\Validator\Rules\NotEqualToRule:
+      attribute: 'notequalto'
+    SilverWare\Validator\Rules\NumberRule:
+      type: 'number'
+    SilverWare\Validator\Rules\PatternRule:
+      attribute: 'pattern'
+    SilverWare\Validator\Rules\RangeRule:
+      attribute: 'range'
+    SilverWare\Validator\Rules\RemoteRule:
+      attribute: 'remote'
+    SilverWare\Validator\Rules\RequiredRule:
+      type: 'required'
+      format: 'boolean'
+      attribute: 'required'
+    SilverWare\Validator\Rules\WordsRule:
+      attribute: 'words'
+    SilverWare\Validator\Rules\URLRule:
+      type: 'url'
+  mappings:
+    message: '%s-message'
