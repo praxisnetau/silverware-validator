@@ -1,5 +1,9 @@
 # SilverWare Validator
 
+[![Latest Stable Version](https://poser.pugx.org/silverware/validator/v/stable)](https://packagist.org/packages/silverware/validator)
+[![Latest Unstable Version](https://poser.pugx.org/silverware/validator/v/unstable)](https://packagist.org/packages/silverware/validator)
+[![License](https://poser.pugx.org/silverware/validator/license)](https://packagist.org/packages/silverware/validator)
+
 A form validation module for [SilverStripe v4][silverstripe-framework] which supports alternative
 client-side backends and customisable validation rules. Ships with [Parsley.js][parsleyjs] as the
 default validation backend.  Configured out-of-the-box for use with [Bootstrap v4][bootstrap] forms.
