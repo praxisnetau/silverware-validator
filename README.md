@@ -96,32 +96,32 @@ straight away to validate your forms. These rules support both client-side
 and server-side validation. Included with SilverWare Validator are the
 following rule classes:
 
-- `AlphaNumRule`
-- `CheckRule`
-- `ComparisonRule`
-- `DateRule`
-- `DigitsRule`
-- `DomainRule`
-- `EmailRule`
-- `EqualToRule`
-- `IntegerRule`
-- `LengthRule`
-- `MaxCheckRule`
-- `MaxLengthRule`
-- `MaxRule`
-- `MaxWordsRule`
-- `MinCheckRule`
-- `MinLengthRule`
-- `MinRule`
-- `MinWordsRule`
-- `NotEqualToRule`
-- `NumberRule`
-- `PatternRule`
-- `RangeRule`
-- `RemoteRule`
-- `RequiredRule`
-- `URLRule`
-- `WordsRule`
+- [`AlphaNumRule`](#alphanumrule)
+- [`CheckRule`](#checkrule)
+- [`ComparisonRule`](#comparisonrule)
+- [`DateRule`](#daterule)
+- [`DigitsRule`](#digitsrule)
+- [`DomainRule`](#domainrule)
+- [`EmailRule`](#emailrule)
+- [`EqualToRule`](#equaltorule)
+- [`IntegerRule`](#integerrule)
+- [`LengthRule`](#lengthrule)
+- [`MaxCheckRule`](#maxcheckrule)
+- [`MaxLengthRule`](#maxlengthrule)
+- [`MaxRule`](#maxrule)
+- [`MaxWordsRule`](#maxwordsrule)
+- [`MinCheckRule`](#mincheckrule)
+- [`MinLengthRule`](#minlengthrule)
+- [`MinRule`](#minrule)
+- [`MinWordsRule`](#minwordsrule)
+- [`NotEqualToRule`](#notequaltorule)
+- [`NumberRule`](#numberrule)
+- [`PatternRule`](#patternrule)
+- [`RangeRule`](#rangerule)
+- [`RemoteRule`](#remoterule)
+- [`RequiredRule`](#requiredrule)
+- [`URLRule`](#urlrule)
+- [`WordsRule`](#wordsrule)
 
 Each of these rules will be covered in greater detail below.
 
