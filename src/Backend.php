@@ -18,7 +18,9 @@
 namespace SilverWare\Validator;
 
 use SilverStripe\Core\ClassInfo;
-use SilverStripe\Core\Object;
+use SilverStripe\Core\Config\Configurable;
+use SilverStripe\Core\Extensible;
+use SilverStripe\Core\Injector\Injectable;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormField;
 use SilverStripe\View\Requirements;
@@ -33,8 +35,12 @@ use SilverWare\Validator\Validator;
  * @license https://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  * @link https://github.com/praxisnetau/silverware-validator
  */
-abstract class Backend extends Object
+abstract class Backend
 {
+    use Configurable;
+    use Extensible;
+    use Injectable;
+    
     /**
      * An array of required JavaScript files.
      *
@@ -68,11 +74,32 @@ abstract class Backend extends Object
     private static $mappings = [];
     
     /**
+     * The class name of this object.
+     *
+     * @var string
+     */
+    public $class;
+    
+    /**
      * The validator frontend associated with this backend.
      *
      * @var Validator
      */
     protected $frontend;
+    
+    /**
+     * Constructs the object upon instantiation.
+     */
+    public function __construct()
+    {
+        // Define Class Attribute:
+        
+        $this->class = get_class($this);
+        
+        // Construct Extension Instances:
+        
+        $this->constructExtensions();
+    }
     
     /**
      * Defines the value of the frontend attribute.

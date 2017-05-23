@@ -17,7 +17,9 @@
 
 namespace SilverWare\Validator;
 
-use SilverStripe\Core\Object;
+use SilverStripe\Core\Config\Configurable;
+use SilverStripe\Core\Extensible;
+use SilverStripe\Core\Injector\Injectable;
 use SilverStripe\Forms\FormField;
 
 /**
@@ -29,8 +31,12 @@ use SilverStripe\Forms\FormField;
  * @license https://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  * @link https://github.com/praxisnetau/silverware-validator
  */
-abstract class Rule extends Object
+abstract class Rule
 {
+    use Configurable;
+    use Extensible;
+    use Injectable;
+    
     /**
      * Defines the default type for the rule.
      *
@@ -46,6 +52,13 @@ abstract class Rule extends Object
      * @config
      */
     private static $default_format;
+    
+    /**
+     * The class name of this object.
+     *
+     * @var string
+     */
+    public $class;
     
     /**
      * A string which defines the rule type.
@@ -88,6 +101,20 @@ abstract class Rule extends Object
      * @var string|array
      */
     protected $attribute;
+    
+    /**
+     * Constructs the object upon instantiation.
+     */
+    public function __construct()
+    {
+        // Define Class Attribute:
+        
+        $this->class = get_class($this);
+        
+        // Construct Extension Instances:
+        
+        $this->constructExtensions();
+    }
     
     /**
      * Answers the test result of the rule on the given value.
