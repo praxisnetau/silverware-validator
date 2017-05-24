@@ -74,13 +74,6 @@ abstract class Backend
     private static $mappings = [];
     
     /**
-     * The class name of this object.
-     *
-     * @var string
-     */
-    public $class;
-    
-    /**
      * The validator frontend associated with this backend.
      *
      * @var Validator
@@ -92,10 +85,6 @@ abstract class Backend
      */
     public function __construct()
     {
-        // Define Class Attribute:
-        
-        $this->class = get_class($this);
-        
         // Construct Extension Instances:
         
         $this->constructExtensions();
@@ -170,7 +159,7 @@ abstract class Backend
      */
     public function getHTMLClass()
     {
-        return strtolower(ClassInfo::shortName($this->class));
+        return strtolower(ClassInfo::shortName(static::class));
     }
     
     /**
@@ -395,8 +384,8 @@ abstract class Backend
     {
         if ($rules = $this->config()->rules) {
             
-            if (isset($rules[$rule->class])) {
-                return $rules[$rule->class];
+            if (isset($rules[get_class($rule)])) {
+                return $rules[get_class($rule)];
             }
             
         }

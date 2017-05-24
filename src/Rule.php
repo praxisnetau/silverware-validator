@@ -54,13 +54,6 @@ abstract class Rule
     private static $default_format;
     
     /**
-     * The class name of this object.
-     *
-     * @var string
-     */
-    public $class;
-    
-    /**
      * A string which defines the rule type.
      *
      * @var string
@@ -107,10 +100,6 @@ abstract class Rule
      */
     public function __construct()
     {
-        // Define Class Attribute:
-        
-        $this->class = get_class($this);
-        
         // Construct Extension Instances:
         
         $this->constructExtensions();

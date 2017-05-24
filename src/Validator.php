@@ -216,7 +216,7 @@ class Validator extends BaseValidator
      */
     public function setRule($fieldName, Rule $rule)
     {
-        $this->rules[$fieldName][$rule->class] = $rule;
+        $this->rules[$fieldName][get_class($rule)] = $rule;
         
         $rule->setValidator($this);
         
