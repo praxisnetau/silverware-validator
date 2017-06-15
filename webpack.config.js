@@ -29,7 +29,7 @@ const style = (env, loaders) => {
   return (env === 'production') ? ExtractTextPlugin.extract({
     fallback: 'style-loader',
     use: loaders
-  }) : ['style-loader'].concat(loaders);
+  }) : [{ loader: 'style-loader' }].concat(loaders);
 };
 
 // Configure Rules:

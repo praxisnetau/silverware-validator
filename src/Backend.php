@@ -164,6 +164,8 @@ abstract class Backend
     
     /**
      * Initialises the validator backend (with extension hooks).
+     *
+     * @return void
      */
     public function doInit()
     {
@@ -327,6 +329,8 @@ abstract class Backend
     
     /**
      * Loads the CSS and scripts required by the receiver.
+     *
+     * @return void
      */
     public function loadRequirements()
     {
@@ -345,6 +349,8 @@ abstract class Backend
     
     /**
      * Initialises the validator backend.
+     *
+     * @return void
      */
     protected function init()
     {

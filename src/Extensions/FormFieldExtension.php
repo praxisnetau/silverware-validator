@@ -35,6 +35,8 @@ class FormFieldExtension extends Extension
      * Updates the HTML attributes of the extended field.
      *
      * @param array $attributes
+     *
+     * @return void
      */
     public function updateAttributes(&$attributes)
     {
