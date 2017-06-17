@@ -54,7 +54,8 @@ $(function() {
           return el.$element;
         },
         errorsContainer: function(el) {
-          return el.$element.closest('.field');
+          var $holder = $('#' + el.$element.attr('id') + '_Holder');
+          return $holder.hasClass('fieldholder-small') ? $holder : el.$element.closest('.field');
         },
         errorClass: $form.data('field-error-class'),
         successClass: $form.data('field-success-class'),
