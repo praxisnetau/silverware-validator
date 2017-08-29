@@ -65,7 +65,7 @@ class ParsleyBackend extends Backend
      * @var string
      * @config
      */
-    private static $error_wrapper_class = 'form-control-feedback';
+    private static $error_wrapper_class = 'invalid-feedback';
     
     /**
      * Defines the class name to add to the field group element upon error.
@@ -73,7 +73,7 @@ class ParsleyBackend extends Backend
      * @var string
      * @config
      */
-    private static $group_error_class = 'has-danger';
+    private static $group_error_class = 'has-invalid';
     
     /**
      * Defines the class name to add to the field group element upon success.
@@ -81,7 +81,7 @@ class ParsleyBackend extends Backend
      * @var string
      * @config
      */
-    private static $group_success_class = 'has-success';
+    private static $group_success_class = 'has-valid';
     
     /**
      * Defines the class name to add to the field element upon error.
@@ -89,7 +89,7 @@ class ParsleyBackend extends Backend
      * @var string
      * @config
      */
-    private static $field_error_class = 'form-control-danger';
+    private static $field_error_class = 'is-invalid';
     
     /**
      * Defines the class name to add to the field element upon success.
@@ -97,7 +97,7 @@ class ParsleyBackend extends Backend
      * @var string
      * @config
      */
-    private static $field_success_class = 'form-control-success';
+    private static $field_success_class = 'is-valid';
     
     /**
      * A string of events which will trigger validation.
