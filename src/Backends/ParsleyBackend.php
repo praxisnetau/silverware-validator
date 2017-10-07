@@ -40,7 +40,7 @@ class ParsleyBackend extends Backend
      * @config
      */
     private static $required_js = [
-        'silverware-validator/client/dist/js/parsley.js'
+        'silverware/validator: client/dist/js/parsley.js'
     ];
     
     /**
