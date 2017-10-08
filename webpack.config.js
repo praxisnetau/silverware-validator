@@ -5,6 +5,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
 
 // Load Plugin Modules:
 
@@ -18,7 +19,7 @@ const PATHS = {
     SRC: path.resolve(__dirname, 'client/src'),
     DIST: path.resolve(__dirname, 'client/dist'),
     BUNDLES: path.resolve(__dirname, 'client/src/bundles'),
-    PUBLIC: '/silverware-validator/client/dist/',
+    PUBLIC: '/resources/silverware/validator/client/dist/',
   },
   MODULES: path.resolve(__dirname, 'node_modules')
 };
@@ -52,7 +53,10 @@ const rules = (env) => {
           loader: 'css-loader'
         },
         {
-          loader: 'postcss-loader'
+          loader: 'postcss-loader',
+          options: {
+            plugins: [ autoprefixer ] // see "browserslist" in package.json
+          }
         }
       ])
     },
@@ -63,7 +67,10 @@ const rules = (env) => {
           loader: 'css-loader'
         },
         {
-          loader: 'postcss-loader'
+          loader: 'postcss-loader',
+          options: {
+            plugins: [ autoprefixer ] // see "browserslist" in package.json
+          }
         },
         {
           loader: 'sass-loader',
