@@ -36,7 +36,7 @@ abstract class Rule
     use Configurable;
     use Extensible;
     use Injectable;
-    
+
     /**
      * Defines the default type for the rule.
      *
@@ -44,7 +44,7 @@ abstract class Rule
      * @config
      */
     private static $default_type;
-    
+
     /**
      * Defines the default format for the rule.
      *
@@ -52,59 +52,57 @@ abstract class Rule
      * @config
      */
     private static $default_format;
-    
+
     /**
      * A string which defines the rule type.
      *
      * @var string
      */
     protected $type;
-    
+
     /**
      * The form field instance associated with this rule.
      *
      * @var FormField
      */
     protected $field;
-    
+
     /**
      * A tokenised string which defines the format for the validator attribute.
      *
      * @var string
      */
     protected $format;
-    
+
     /**
      * The message displayed to the user when the rule test fails.
      *
      * @var string
      */
     protected $message;
-    
+
     /**
      * The form validator instance associated with this rule.
      *
      * @var Validator
      */
     protected $validator;
-    
+
     /**
      * The name of the data attribute used for this rule.
      *
      * @var string|array
      */
     protected $attribute;
-    
+
     /**
      * Constructs the object upon instantiation.
      */
     public function __construct()
     {
-        // Construct Extension Instances:
-        
-        $this->constructExtensions();
+
     }
-    
+
     /**
      * Answers the test result of the rule on the given value.
      *
@@ -113,7 +111,7 @@ abstract class Rule
      * @return boolean
      */
     abstract public function test($value);
-    
+
     /**
      * Defines the value of the type attribute.
      *
@@ -124,10 +122,10 @@ abstract class Rule
     public function setType($type)
     {
         $this->type = (string) $type;
-        
+
         return $this;
     }
-    
+
     /**
      * Answers the value of the type attribute.
      *
@@ -137,7 +135,7 @@ abstract class Rule
     {
         return $this->type ? $this->type : $this->getDefaultType();
     }
-    
+
     /**
      * Answers the default type for the receiver.
      *
@@ -147,7 +145,7 @@ abstract class Rule
     {
         return $this->config()->default_type;
     }
-    
+
     /**
      * Answers true if the receiver has a type defined.
      *
@@ -157,7 +155,7 @@ abstract class Rule
     {
         return (boolean) $this->type;
     }
-    
+
     /**
      * Defines the value of the format attribute.
      *
@@ -168,10 +166,10 @@ abstract class Rule
     public function setFormat($format)
     {
         $this->format = (string) $format;
-        
+
         return $this;
     }
-    
+
     /**
      * Answers the value of the format attribute.
      *
@@ -181,7 +179,7 @@ abstract class Rule
     {
         return $this->format ? $this->format : $this->getDefaultFormat();
     }
-    
+
     /**
      * Answers true if the receiver has a format defined.
      *
@@ -191,7 +189,7 @@ abstract class Rule
     {
         return (boolean) $this->getFormat();
     }
-    
+
     /**
      * Answers the default format for the receiver.
      *
@@ -201,7 +199,7 @@ abstract class Rule
     {
         return $this->config()->default_format;
     }
-    
+
     /**
      * Defines the name(s) used by the rule for the form field attribute.
      *
@@ -212,10 +210,10 @@ abstract class Rule
     public function setAttribute($attribute)
     {
         $this->attribute = $attribute;
-        
+
         return $this;
     }
-    
+
     /**
      * Answers the name used by the rule for the form field attribute.
      *
@@ -224,44 +222,44 @@ abstract class Rule
     public function getAttribute()
     {
         // Determine Attribute Type:
-        
+
         if (is_array($this->attribute)) {
-            
+
             // Answer Conditional Attribute:
-            
+
             foreach ($this->attribute as $name => $cond) {
-                
+
                 list($attr, $val) = explode('=', $cond);
-                
+
                 if ($this->$attr == $val) {
                     return $name;
                 }
-                
+
             }
-            
+
         } elseif ($this->attribute) {
-            
+
             // Using Dynamic Attribute? (i.e. $type)
-            
+
             if (strpos($this->attribute, '$') === 0) {
-                
+
                 $attr = substr($this->attribute, 1);
-                
+
                 return $this->$attr;
-                
+
             }
-            
+
             // Answer String Attribute:
-            
+
             return $this->attribute;
-            
+
         }
-        
+
         // Answer Default Attribute:
-        
+
         return $this->backend()->getDefaultAttribute();
     }
-    
+
     /**
      * Answers the value of the rule attribute.
      *
@@ -271,7 +269,7 @@ abstract class Rule
     {
         return $this->hasFormat() ? $this->getFormattedValue() : $this->getType();
     }
-    
+
     /**
      * Answers the formatted value for the rule attribute.
      *
@@ -280,17 +278,17 @@ abstract class Rule
     public function getFormattedValue()
     {
         if ($this->hasFormat()) {
-            
+
             switch ($this->getFormat()) {
                 case 'boolean':
                     return 'true';
                 default:
                     return $this->replaceTokens($this->getFormat());
             }
-            
+
         }
     }
-    
+
     /**
      * Defines the value of the field attribute.
      *
@@ -301,10 +299,10 @@ abstract class Rule
     public function setField(FormField $field)
     {
         $this->field = $field;
-        
+
         return $this;
     }
-    
+
     /**
      * Answers the value of the field attribute.
      *
@@ -314,7 +312,7 @@ abstract class Rule
     {
         return $this->field;
     }
-    
+
     /**
      * Answers the name of the associated form field.
      *
@@ -326,7 +324,7 @@ abstract class Rule
             return $field->getName();
         }
     }
-    
+
     /**
      * Answers the form instance from the associated field.
      *
@@ -336,7 +334,7 @@ abstract class Rule
     {
         return $this->field->getForm();
     }
-    
+
     /**
      * Answers the list of fields from the associated form.
      *
@@ -346,7 +344,7 @@ abstract class Rule
     {
         return $this->getForm()->Fields();
     }
-    
+
     /**
      * Answers a data field with the specified name.
      *
@@ -358,7 +356,7 @@ abstract class Rule
     {
         return $this->getFormFields()->dataFieldByName($name);
     }
-    
+
     /**
      * Defines the value of the message attribute.
      *
@@ -369,10 +367,10 @@ abstract class Rule
     public function setMessage($message)
     {
         $this->message = (string) $message;
-        
+
         return $this;
     }
-    
+
     /**
      * Answers the value of the message attribute.
      *
@@ -382,7 +380,7 @@ abstract class Rule
     {
         return $this->message ? $this->message : $this->getDefaultMessage();
     }
-    
+
     /**
      * Answers true if the receiver has a message defined.
      *
@@ -392,7 +390,7 @@ abstract class Rule
     {
         return (boolean) $this->getMessage();
     }
-    
+
     /**
      * Answers the default message for the rule.
      *
@@ -402,7 +400,7 @@ abstract class Rule
     {
         return _t(__CLASS__ . '.DEFAULTMESSAGE', 'This value seems to be invalid.');
     }
-    
+
     /**
      * Defines the value of the validator attribute.
      *
@@ -413,12 +411,12 @@ abstract class Rule
     public function setValidator(Validator $validator)
     {
         $this->validator = $validator;
-        
+
         $validator->configureRule($this);
-        
+
         return $this;
     }
-    
+
     /**
      * Answers the value of the validator attribute.
      *
@@ -428,7 +426,7 @@ abstract class Rule
     {
         return $this->validator;
     }
-    
+
     /**
      * Answers the validator attributes for the associated form field.
      *
@@ -437,12 +435,12 @@ abstract class Rule
     public function getAttributes()
     {
         $attributes = [];
-        
+
         $this->extend('updateAttributes', $attributes);
-        
+
         return $attributes;
     }
-    
+
     /**
      * Answers true if the rule is valid for use with the validator.
      *
@@ -452,7 +450,7 @@ abstract class Rule
     {
         return (boolean) $this->getAttribute();
     }
-    
+
     /**
      * Replaces identified tokens within the given string.
      *
@@ -465,10 +463,10 @@ abstract class Rule
         foreach ($this->getTokenNames($string) as $token) {
             $string = str_replace("{{$token}}", $this->getTokenValue($token), $string);
         }
-        
+
         return $string;
     }
-    
+
     /**
      * Answers the validator backend.
      *
@@ -478,7 +476,7 @@ abstract class Rule
     {
         return $this->validator->backend;
     }
-    
+
     /**
      * Answers the appropriate validator attribute name for the given mapping name and arguments.
      *
@@ -491,7 +489,7 @@ abstract class Rule
     {
         return $this->backend()->attr($name, $args);
     }
-    
+
     /**
      * Answers an array of the token names found within the given string.
      *
@@ -502,10 +500,10 @@ abstract class Rule
     protected function getTokenNames($string)
     {
         preg_match_all('/{\K[^}]*(?=})/m', $string, $matches);
-        
+
         return $matches[0];
     }
-    
+
     /**
      * Answers the value of the given token name.
      *
@@ -516,11 +514,11 @@ abstract class Rule
     protected function getTokenValue($name)
     {
         $method = "get{$name}";
-        
+
         if ($this->hasMethod($method)) {
             return $this->{$method}();
         }
-        
+
         return $this->$name;
     }
 }
